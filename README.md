@@ -1,6 +1,6 @@
 # entari-plugin-tsugu
 
-一个用于 Entari 框架的 Tsugu BanGDream Bot 插件。
+一个用于 Entari 框架的 Tsugu BanGDream Bot 插件.
 
 ## 安装
 
@@ -10,7 +10,7 @@ pip install entari-plugin-tsugu
 
 ## 配置项
 
-`qq_passive`
+`qq_passive`   
 此项设置用于 QQ 官方机器人平台驱动器例如[GlycCat](https://github.com/WindowsSov8forUs/GlycCat) 的被动消息支持, 默认为布尔值 `False` 
 
 `prefix`   
