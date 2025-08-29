@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "entari-plugin-tsugu"
+version = "0.1.0"
+description = "Tsugu BanGDream Bot"
+authors = [
+    {"name" = "kumoSleeping", "email" = "zjr2992@outlook.com"}
+]
+dependencies = [
+    "arclet.entari[yaml,cron,reload,dotenv] >= 0.14.1",
+    "tsugu",
+]
+requires-python = ">=3.11"
+readme = "README.md"
+license = {"text" = "MIT"}
+keywords = ["entari", "tsugu", "bangdream", "bot"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+[project.urls]
+Homepage = "https://github.com/kumoSleeping/entari-plugin-tsugu"
+Repository = "https://github.com/kumoSleeping/entari-plugin-tsugu"
+Issues = "https://github.com/kumoSleeping/entari-plugin-tsugu/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"*" = ["*.txt", "*.md"]

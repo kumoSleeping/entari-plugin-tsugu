@@ -1,0 +1,88 @@
+name: Publish to PyPI
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'pyproject.toml'  # 监听 pyproject.toml 文件变动
+      - 'src/**'  # 监听源代码变动
+  workflow_dispatch:  # 允许手动触发
+
+permissions:
+  contents: write
+  id-token: write  # 用于 OIDC 认证
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install build dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install build twine
+
+    - name: Extract version from pyproject.toml
+      id: get_version
+      run: |
+        VERSION=$(python -c "import tomllib; print(tomllib.load(open('pyproject.toml', 'rb'))['project']['version'])")
+        echo "VERSION=$VERSION" >> $GITHUB_ENV
+        echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+    - name: Build distribution
+      run: |
+        python -m build
+
+    - name: Check distribution
+      run: |
+        twine check dist/*
+
+    - name: Publish to PyPI
+      uses: pypa/gh-action-pypi-publish@release/v1
+      with:
+        # 使用 OIDC 认证，更安全
+        # 如果你更喜欢使用 API Token，可以取消下面这行注释并设置 PYPI_TOKEN secret
+        # password: ${{ secrets.PYPI_TOKEN }}
+
+    - name: Create GitHub Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: v${{ env.VERSION }}
+        release_name: Release v${{ env.VERSION }}
+        body: |
+          Release version ${{ env.VERSION }}
+          
+          ## Changes
+          - Check the commit history for detailed changes
+        draft: false
+        prerelease: false
+
+    - name: Upload Release Assets
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./dist/entari_plugin_tsugu-${{ env.VERSION }}.tar.gz
+        asset_name: entari-plugin-tsugu-${{ env.VERSION }}.tar.gz
+        asset_content_type: application/gzip
+
+    - name: Upload Wheel Asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./dist/entari_plugin_tsugu-${{ env.VERSION }}-py3-none-any.whl
+        asset_name: entari-plugin-tsugu-${{ env.VERSION }}-py3-none-any.whl
+        asset_content_type: application/zip
