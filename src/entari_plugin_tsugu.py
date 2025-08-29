@@ -13,6 +13,7 @@ from arclet.entari import MessageCreatedEvent, Session, MessageChain
 from satori.element import Custom
 from satori.exception import ServerException
 from arclet.entari import MessageChain, At, Image
+from dataclasses import field
 
 from tsugu import cmd_generator
 
@@ -24,7 +25,7 @@ logger = logging.getLogger(__name__)
 
 class TsuguPluginConfig(BasicConfModel):
     qq_passive: bool = False  # passive mode for QQ platform
-    prefix: List[str] = ['/', '']  # command prefix list
+    prefix: List[str] = field(default_factory=lambda: ['/', ''])  # command prefix list
 
 
 metadata(
