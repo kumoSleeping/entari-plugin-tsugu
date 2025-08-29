@@ -2,7 +2,6 @@
 
 一个用于 Entari 框架的 Tsugu BanGDream Bot 插件。
 
-、
 ## 安装
 
 ```bash
