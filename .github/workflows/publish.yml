@@ -46,10 +46,10 @@ jobs:
 
     - name: Publish to PyPI
       uses: pypa/gh-action-pypi-publish@release/v1
-      with:
-        # 使用 OIDC 认证，更安全
-        # 如果你更喜欢使用 API Token，可以取消下面这行注释并设置 PYPI_TOKEN secret
-        # password: ${{ secrets.PYPI_TOKEN }}
+      # 使用 OIDC 认证，更安全
+      # 如果你更喜欢使用 API Token，可以取消下面这行注释并设置 PYPI_TOKEN secret
+      # with:
+      #   password: ${{ secrets.PYPI_TOKEN }}
 
     - name: Create GitHub Release
       id: create_release
