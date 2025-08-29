@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "entari-plugin-tsugu"
-version = "0.1.2"
+version = "0.1.3"
 description = "Tsugu BanGDream Bot"
 authors = [
     {"name" = "kumoSleeping", "email" = "zjr2992@outlook.com"}
@@ -33,6 +33,7 @@ Issues = "https://github.com/kumoSleeping/entari-plugin-tsugu/issues"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+include = ["entari_plugin_tsugu*"]
 
 [tool.setuptools.package-data]
 "*" = ["*.txt", "*.md"]
