@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "entari_plugin_tsugu"
-version = "0.1.6"
+version = "0.1.7"
 description = "Tsugu BanGDream Bot"
 authors = [
     {"name" = "kumoSleeping", "email" = "zjr2992@outlook.com"}
@@ -13,7 +13,7 @@ dependencies = [
     "arclet.entari[yaml,cron,reload,dotenv] >= 0.14.1",
     "tsugu >= 6.4.0"
 ]
-requires-python = ">=3.11"
+requires-python = ">=3.8"
 readme = "README.md"
 license = {"text" = "MIT"}
 keywords = ["entari", "tsugu", "bangdream", "bot"]

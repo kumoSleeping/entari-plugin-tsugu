@@ -31,7 +31,7 @@ class TsuguPluginConfig(BasicConfModel):
 metadata(
     name="entari_plugin_tsugu",
     author=[{"name": "kumoSleeping", "email": "zjr2992@outlook.com"}],
-    version="0.1.6",
+    version="0.1.7",
     description="Tsugu BanGDream Bot",
     config=TsuguPluginConfig,
 )
