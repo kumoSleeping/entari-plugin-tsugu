@@ -1,7 +1,7 @@
 # entari-plugin-tsugu
 # Tsugu BanGDream Bot Plugin for Entari Framework
 
-__version__ = "0.1.3"
+__version__ = "0.1.5"
 
 from arclet.entari import metadata, BasicConfModel, plugin_config
 import json
@@ -29,9 +29,9 @@ class TsuguPluginConfig(BasicConfModel):
 
 
 metadata(
-    name="entari-plugin-tsugu",
+    name="entari_plugin_tsugu",
     author=[{"name": "kumoSleeping", "email": "zjr2992@outlook.com"}],
-    version="0.1.4",
+    version="0.1.5",
     description="Tsugu BanGDream Bot",
     config=TsuguPluginConfig,
 )

@@ -3,8 +3,8 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "entari-plugin-tsugu"
-version = "0.1.4"
+name = "entari_plugin_tsugu"
+version = "0.1.5"
 description = "Tsugu BanGDream Bot"
 authors = [
     {"name" = "kumoSleeping", "email" = "zjr2992@outlook.com"}
